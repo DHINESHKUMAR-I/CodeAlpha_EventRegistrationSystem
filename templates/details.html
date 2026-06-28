@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>{{ event.title }}</h1>
+
+    <div class="card">
+
+        <p><strong>Description:</strong></p>
+        <p>{{ event.description }}</p>
+
+        <p><strong>Date:</strong> {{ event.date }}</p>
+
+        <p><strong>Location:</strong> {{ event.location }}</p>
+
+    </div>
+
+    <h2>Register for this Event</h2>
+
+    <form method="POST" action="{% url 'register' event.id %}">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="Enter Your Name" required>
+
+    <input type="email" name="email" placeholder="Enter Your Email" required>
+
+    <button type="submit">Register</button>
+</form>
+
+    <br>
+
+    <a href="/" class="btn">← Back to Events</a>
+
+</div>
+
+</body>
+</html>

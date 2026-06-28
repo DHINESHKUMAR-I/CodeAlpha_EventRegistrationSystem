@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration System</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎉 Event Registration System</h1>
+    <p>Browse available events and register easily.</p>
+
+    <div class="top-btn">
+        <a href="/registrations/" class="btn">My Registrations</a>
+    </div>
+
+    <div class="cards">
+
+        {% for event in events %}
+
+        <div class="card">
+
+            <h2>{{ event.title }}</h2>
+
+            <p>{{ event.description|truncatechars:80 }}</p>
+
+            <p><strong>📅</strong> {{ event.date }}</p>
+
+            <p><strong>📍</strong> {{ event.location }}</p>
+
+            <a href="/event/{{ event.id }}/" class="btn">
+                View Details
+            </a>
+
+        </div>
+
+        {% empty %}
+
+        <h3>No Events Available</h3>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
